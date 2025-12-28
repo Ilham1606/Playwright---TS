@@ -105,7 +105,7 @@
       "specs": [
         {
           "title": "Assert all title text DatePickers",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -116,62 +116,30 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 8,
+                  "workerIndex": 9,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 4384,
-                  "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Datepicker With R\u001b[7moo\u001b[27mnge\"\u001b[39m\nReceived: \u001b[31m\"Datepicker With R\u001b[7ma\u001b[27mnge\"\u001b[39m",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Datepicker With R\u001b[7moo\u001b[27mnge\"\u001b[39m\nReceived: \u001b[31m\"Datepicker With R\u001b[7ma\u001b[27mnge\"\u001b[39m\n    at DatePicker.assertTitleWithRangeDatePicker (C:\\Users\\1873\\Documents\\Playwright - TS\\src\\pages\\date-picker.page.ts:80:29)\n    at C:\\Users\\1873\\Documents\\Playwright - TS\\src\\tests\\datePicker-conduit.spec.ts:17:3",
-                    "location": {
-                      "file": "C:\\Users\\1873\\Documents\\Playwright - TS\\src\\pages\\date-picker.page.ts",
-                      "column": 29,
-                      "line": 80
-                    },
-                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\date-picker.page.ts:80\n\n\u001b[0m \u001b[90m 78 |\u001b[39m     \u001b[36mconst\u001b[39m titleText \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdpWithRangeTitle\u001b[33m.\u001b[39minnerText()\u001b[33m;\u001b[39m\n \u001b[90m 79 |\u001b[39m     console\u001b[33m.\u001b[39mlog(\u001b[32m\"Datepicker Type: \"\u001b[39m \u001b[33m+\u001b[39m titleText)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 80 |\u001b[39m     \u001b[36mawait\u001b[39m expect(titleText)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"Datepicker With Roonge\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 81 |\u001b[39m   }\n \u001b[90m 82 |\u001b[39m\n \u001b[90m 83 |\u001b[39m   \u001b[36masync\u001b[39m assertTitleDisableMinMaxDatePicker()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "C:\\Users\\1873\\Documents\\Playwright - TS\\src\\pages\\date-picker.page.ts",
-                        "column": 29,
-                        "line": 80
-                      },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Datepicker With R\u001b[7moo\u001b[27mnge\"\u001b[39m\nReceived: \u001b[31m\"Datepicker With R\u001b[7ma\u001b[27mnge\"\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\pages\\date-picker.page.ts:80\n\n\u001b[0m \u001b[90m 78 |\u001b[39m     \u001b[36mconst\u001b[39m titleText \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdpWithRangeTitle\u001b[33m.\u001b[39minnerText()\u001b[33m;\u001b[39m\n \u001b[90m 79 |\u001b[39m     console\u001b[33m.\u001b[39mlog(\u001b[32m\"Datepicker Type: \"\u001b[39m \u001b[33m+\u001b[39m titleText)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 80 |\u001b[39m     \u001b[36mawait\u001b[39m expect(titleText)\u001b[33m.\u001b[39mtoBe(\u001b[32m\"Datepicker With Roonge\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 81 |\u001b[39m   }\n \u001b[90m 82 |\u001b[39m\n \u001b[90m 83 |\u001b[39m   \u001b[36masync\u001b[39m assertTitleDisableMinMaxDatePicker()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m\n\u001b[2m    at DatePicker.assertTitleWithRangeDatePicker (C:\\Users\\1873\\Documents\\Playwright - TS\\src\\pages\\date-picker.page.ts:80:29)\u001b[22m\n\u001b[2m    at C:\\Users\\1873\\Documents\\Playwright - TS\\src\\tests\\datePicker-conduit.spec.ts:17:3\u001b[22m"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 9072,
+                  "errors": [],
                   "stdout": [
                     {
                       "text": "Datepicker Type: Common Datepicker\n"
                     },
                     {
                       "text": "Datepicker Type: Datepicker With Range\n"
+                    },
+                    {
+                      "text": "Datepicker Type: Datepicker With Disabled Min Max Values\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-28T03:40:39.736Z",
+                  "startTime": "2025-12-28T05:41:16.213Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "C:\\Users\\1873\\Documents\\Playwright - TS\\test-results\\datePicker-conduit-Assert-all-title-text-DatePickers-chromium\\test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "C:\\Users\\1873\\Documents\\Playwright - TS\\test-results\\datePicker-conduit-Assert-all-title-text-DatePickers-chromium\\error-context.md"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "C:\\Users\\1873\\Documents\\Playwright - TS\\src\\pages\\date-picker.page.ts",
-                    "column": 29,
-                    "line": 80
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "63cfb7ba3d1245e70565-9c1bcf812a429692a798",
@@ -184,11 +152,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-28T03:40:34.745Z",
-    "duration": 9588.205000000075,
-    "expected": 0,
+    "startTime": "2025-12-28T05:41:10.492Z",
+    "duration": 15172.763000000268,
+    "expected": 1,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }
