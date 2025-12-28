@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "lib": ["ESNext", "DOM"],
+    "outDir": "dist",
+    "rootDir": ".", //
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "types": ["@playwright/test", "node"]
+  },
+  "include": [
+    "src",
+    "playwright.config.ts",
+    "tests/**/*.ts",
+    "src/tests/test-fixtures.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
