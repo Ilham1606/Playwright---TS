@@ -8,8 +8,18 @@ test.beforeEach(async ({ page, dashboard }) => {
   await dashboard.selectDarkTheme();
 });
 
-test("Expand Projects row and get project name", async ({ treeGridPage }) => {
+test("Expand Projects row and get project name, size & kind", async ({
+  treeGridPage,
+}) => {
   await treeGridPage.getProjectName();
   await treeGridPage.getSizeProjects();
   await treeGridPage.getKindProjects();
+});
+
+test("Expand Reports row and get report name, size & kind", async ({
+  treeGridPage,
+}) => {
+  await treeGridPage.getReportsName();
+  await treeGridPage.getSizeReports();
+  await treeGridPage.getKindReports();
 });

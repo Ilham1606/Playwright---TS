@@ -7,16 +7,19 @@ export class TreeGridPage {
   readonly searchField: Locator;
 
   // Row Projects //
-  readonly projectsExpandCollapseIcon: Locator;
+  readonly projectsExpandIcon: Locator;
   readonly projectsNameCell: Locator;
   readonly projectsSizeCell: Locator;
   readonly projectsKindCell: Locator;
 
   // Row Reports //
-  readonly reportsExpandCollapseIcon: Locator;
+  readonly reportsExpandIcon: Locator;
+  readonly reportsNameCell: Locator;
+  readonly reportsSizeCell: Locator;
+  readonly reportsKindCell: Locator;
 
   // Row Other //
-  readonly otherExpandCollapseIcon: Locator;
+  readonly otherExpandIcon: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,7 +27,7 @@ export class TreeGridPage {
     this.searchField = page.getByRole("textbox", { name: "Search" });
 
     // Row Projects //
-    this.projectsExpandCollapseIcon = page.locator(
+    this.projectsExpandIcon = page.locator(
       "(//button[@aria-label='expand'])[1]"
     );
     this.projectsNameCell = page.locator(
@@ -34,18 +37,19 @@ export class TreeGridPage {
     this.projectsKindCell = page.locator("(//td[@role='gridcell'])[7]");
 
     // Row Reports //
-    this.reportsExpandCollapseIcon = page.locator(
-      "(//nb-tree-grid-row//button[@aria-label='Toggle Expand/Collapse'])[2]"
+    this.reportsExpandIcon = page.locator(
+      "(//button[@aria-label='expand'])[2]"
     );
+    this.reportsNameCell = page.locator("//tbody//tr[3]//td[1]");
+    this.reportsSizeCell = page.locator("//tbody//tr[3]//td[2]");
+    this.reportsKindCell = page.locator("//tbody//tr[3]//td[3]");
 
     // Row Other //
-    this.otherExpandCollapseIcon = page.locator(
-      "(//nb-tree-grid-row//button[@aria-label='Toggle Expand/Collapse'])[3]"
-    );
+    this.otherExpandIcon = page.locator("(//button[@aria-label='expand'])[3]");
   }
 
   async getProjectName() {
-    await this.projectsExpandCollapseIcon.click();
+    await this.projectsExpandIcon.click();
     const getProjectsName = (await this.projectsNameCell.textContent())?.trim();
     console.log("Projects Name: " + getProjectsName);
   }
@@ -58,5 +62,21 @@ export class TreeGridPage {
   async getKindProjects() {
     const getKindProject = (await this.projectsKindCell.textContent())?.trim();
     console.log("Projects Kind: " + getKindProject);
+  }
+
+  async getReportsName() {
+    await this.reportsExpandIcon.click();
+    const getReportsName = (await this.reportsNameCell.textContent())?.trim();
+    console.log("Reports Name: " + getReportsName);
+  }
+
+  async getSizeReports() {
+    const getSizeReport = (await this.reportsSizeCell.textContent())?.trim();
+    console.log("Reports Size: " + getSizeReport);
+  }
+
+  async getKindReports() {
+    const getKindReport = (await this.reportsKindCell.textContent())?.trim();
+    console.log("Reports Kind: " + getKindReport);
   }
 }

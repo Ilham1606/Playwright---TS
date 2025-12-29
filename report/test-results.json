@@ -104,7 +104,7 @@
       "line": 0,
       "specs": [
         {
-          "title": "Expand Projects row and get project name",
+          "title": "Expand Reports row and get report name, size & kind",
           "ok": true,
           "tags": [],
           "tests": [
@@ -116,25 +116,25 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 5,
+                  "workerIndex": 7,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4731,
+                  "duration": 4585,
                   "errors": [],
                   "stdout": [
                     {
-                      "text": "Projects Name: project-1.doc\n"
+                      "text": "Reports Name: Report 1\n"
                     },
                     {
-                      "text": "Projects Size: 240 KB\n"
+                      "text": "Reports Size: 100 KB\n"
                     },
                     {
-                      "text": "Projects Kind: doc\n"
+                      "text": "Reports Kind: doc\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-29T04:07:21.820Z",
+                  "startTime": "2025-12-29T06:17:56.627Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -142,9 +142,9 @@
               "status": "expected"
             }
           ],
-          "id": "c6b96a0e99952c0505e0-42608bd8ef944cdd9eea",
+          "id": "c6b96a0e99952c0505e0-e036910a3a6ebf444209",
           "file": "treeGrid-conduit.spec.ts",
-          "line": 11,
+          "line": 19,
           "column": 5
         }
       ]
@@ -152,8 +152,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-29T04:07:17.307Z",
-    "duration": 9416.718000000343,
+    "startTime": "2025-12-29T06:17:52.411Z",
+    "duration": 9005.767999999225,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
