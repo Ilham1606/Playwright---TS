@@ -1,14 +1,30 @@
 {
   "name": "playwright---ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright TypeScript with Allure Reporting",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "allure:report": "allure generate --clean -o allure-report",
+    "allure:open": "allure open allure-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "allure-playwright": "^2.14.0",
+    "allure-commandline": "^2.32.0",
+    "dotenv": "^17.2.2",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  },
   "dependencies": {
     "dotenv": "^17.2.2"
   }

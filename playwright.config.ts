@@ -4,20 +4,23 @@ import dotenv from "dotenv";
 // Load .env file
 dotenv.config();
 
+const isCI = !!process.env.CI;
+
 export default defineConfig({
   testDir: "./src/tests",
-  timeout: 30 * 1000, // 30 detik per test
-  retries: 1, // retry kalau flaky
+  timeout: 30 * 1000,
+  retries: isCI ? 2 : 1, // More retries in CI to handle flaky tests
+  fullyParallel: false, // Run tests sequentially in CI
+  workers: isCI ? 1 : 4, // Single worker in CI to avoid resource constraints
   reporter: [
-    ["line"], // simple log di terminal
-    ["html", { open: "never", outputFolder: "report" }], // html report
-    ["json", { outputFile: "report/test-results.json" }], // bisa dipakai CI/CD
+    ["line"],
+    ["html", { open: "never", outputFolder: "playwright-report" }],
+    ["json", { outputFile: "test-results/results.json" }],
+    ["junit", { outputFile: "test-results/junit.xml" }],
   ],
 
   use: {
-    headless: false, // default: jalanin di headless = true
-    // baseURL: process.env.BASE_URL_MICROFINANCE || "https://microapps-test.fifgroup.co.id/",
-    // storageState: "./src/tests/storageState.json",
+    headless: true,
     ignoreHTTPSErrors: true,
     screenshot: "only-on-failure",
     trace: "on-first-retry",

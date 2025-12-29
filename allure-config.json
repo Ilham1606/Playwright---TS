@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "name": "Broken tests",
+      "matchedStatuses": ["broken"]
+    },
+    {
+      "name": "Database errors",
+      "matchedStatuses": ["failed"],
+      "messageRegex": ".*database.*"
+    },
+    {
+      "name": "Timeout errors",
+      "matchedStatuses": ["failed"],
+      "messageRegex": ".*timeout.*"
+    },
+    {
+      "name": "Network errors",
+      "matchedStatuses": ["failed"],
+      "messageRegex": ".*network|ECONNREFUSED.*"
+    }
+  ],
+  "executor": {
+    "name": "GitHub Actions",
+    "type": "github",
+    "reportUrl": "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+  }
+}
