@@ -38,6 +38,13 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # Setup Java for Allure
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
       # Create test results directory
       - name: Create test results directory
         run: mkdir -p test-results
