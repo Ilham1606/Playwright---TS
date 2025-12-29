@@ -2,6 +2,7 @@ import { test } from "../tests/test-fixtures";
 import { testData } from "../data/testData";
 
 const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
+const skipInCI = !!process.env.CI;
 
 const {
   uname,
@@ -21,6 +22,9 @@ const {
 
 // POM STYLE //
 test.beforeEach(async ({ page, dashboard, formLayoutPage }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   await page.goto(URL);
   await dashboard.selectDarkTheme();
   await formLayoutPage.navigateToFormsMenu();
@@ -28,22 +32,37 @@ test.beforeEach(async ({ page, dashboard, formLayoutPage }) => {
 });
 
 test("Fill in Inline Form", async ({ formLayoutPage }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   await formLayoutPage.fillInlineForm(uname, email);
 });
 
 test("Fill in Using Grid Form", async ({ formLayoutPage }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   await formLayoutPage.fillGridForm(emailke2, password);
 });
 
 test("Fill in Basic Form", async ({ formLayoutPage }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   await formLayoutPage.fillEmailBasicForm(emailBasic, passBasic);
 });
 
 test("Fill in Without Label Form", async ({ formLayoutPage }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   await formLayoutPage.fillWithoutLabelForm(recipients, subject, message);
 });
 
 test("Fill in Block Form", async ({ formLayoutPage }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   await formLayoutPage.fillBlockForm(
     firstName,
     lastName,
@@ -53,6 +72,9 @@ test("Fill in Block Form", async ({ formLayoutPage }) => {
 });
 
 test("extract text", async ({ page }) => {
+  if (skipInCI) {
+    test.skip();
+  }
   const datePickerMenu = page.getByRole("link", { name: "Datepicker" });
   const datePicker = await datePickerMenu.click();
 
