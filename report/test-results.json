@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 3
     },
     "preserveOutput": "always",
     "reporter": [
@@ -42,9 +42,9 @@
       {
         "outputDir": "C:/Users/1873/Documents/Playwright - TS/test-results",
         "repeatEach": 1,
-        "retries": 0,
+        "retries": 1,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 3
         },
         "id": "chromium",
         "name": "chromium",
@@ -58,9 +58,9 @@
       {
         "outputDir": "C:/Users/1873/Documents/Playwright - TS/test-results",
         "repeatEach": 1,
-        "retries": 0,
+        "retries": 1,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 3
         },
         "id": "firefox",
         "name": "firefox",
@@ -74,9 +74,9 @@
       {
         "outputDir": "C:/Users/1873/Documents/Playwright - TS/test-results",
         "repeatEach": 1,
-        "retries": 0,
+        "retries": 1,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 3
         },
         "id": "webkit",
         "name": "webkit",
@@ -91,18 +91,447 @@
     "shard": null,
     "tags": [],
     "updateSnapshots": "missing",
-    "updateSourceMethod": "3way",
+    "updateSourceMethod": "patch",
     "version": "1.57.0",
-    "workers": 1,
+    "workers": 6,
     "webServer": null
   },
   "suites": [
+    {
+      "title": "datePicker-conduit.spec.ts",
+      "file": "datePicker-conduit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Assert all title text DatePickers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12951,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Datepicker Type: Common Datepicker\n"
+                    },
+                    {
+                      "text": "Datepicker Type: Datepicker With Range\n"
+                    },
+                    {
+                      "text": "Datepicker Type: Datepicker With Disabled Min Max Values\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:17.769Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "63cfb7ba3d1245e70565-9c1bcf812a429692a798",
+          "file": "datePicker-conduit.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "Select date in Common DatePicker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7748,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Selected Date: 31\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:32.876Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "63cfb7ba3d1245e70565-0347ffd25812a0e8277f",
+          "file": "datePicker-conduit.spec.ts",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "title": "Select date range in DatePicker With Range",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8033,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Start Date: 1\n"
+                    },
+                    {
+                      "text": "End Date: 31\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:40.687Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "63cfb7ba3d1245e70565-026dfd257d88f4410dca",
+          "file": "datePicker-conduit.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "Select date in DatePicker With Disabled Min Max Values",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9746,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Selected Date: 31\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:48.802Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "63cfb7ba3d1245e70565-e11001333d251d48912e",
+          "file": "datePicker-conduit.spec.ts",
+          "line": 31,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "formLayouts-conduit.spec.ts",
+      "file": "formLayouts-conduit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fill in Inline Form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 13097,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:17.723Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bf2904eb852377fd464-63e87d0e836635dfe496",
+          "file": "formLayouts-conduit.spec.ts",
+          "line": 30,
+          "column": 5
+        },
+        {
+          "title": "Fill in Using Grid Form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8119,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:33.003Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bf2904eb852377fd464-0d63be24eee5970d93cd",
+          "file": "formLayouts-conduit.spec.ts",
+          "line": 34,
+          "column": 5
+        },
+        {
+          "title": "Fill in Basic Form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8262,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:41.177Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bf2904eb852377fd464-7cf662d868afd6ed6173",
+          "file": "formLayouts-conduit.spec.ts",
+          "line": 38,
+          "column": 5
+        },
+        {
+          "title": "Fill in Without Label Form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:49.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bf2904eb852377fd464-6c74647c621e8a9dfed4",
+          "file": "formLayouts-conduit.spec.ts",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "title": "Fill in Block Form",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:58.833Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bf2904eb852377fd464-2bfac3dfe208e71d7175",
+          "file": "formLayouts-conduit.spec.ts",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "title": "extract text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5257,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Common Datepicker\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:58:06.729Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1bf2904eb852377fd464-cd56cf2ad880136f81b3",
+          "file": "formLayouts-conduit.spec.ts",
+          "line": 55,
+          "column": 5
+        }
+      ]
+    },
     {
       "title": "treeGrid-conduit.spec.ts",
       "file": "treeGrid-conduit.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
+        {
+          "title": "Expand Projects row and get project name, size & kind",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 10862,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Projects Name: project-1.doc\n"
+                    },
+                    {
+                      "text": "Projects Size: 240 KB\n"
+                    },
+                    {
+                      "text": "Projects Kind: doc\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-12-29T06:57:17.746Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c6b96a0e99952c0505e0-bb7ea48908a4dc8ac8c1",
+          "file": "treeGrid-conduit.spec.ts",
+          "line": 11,
+          "column": 5
+        },
         {
           "title": "Expand Reports row and get report name, size & kind",
           "ok": true,
@@ -116,10 +545,10 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 7,
-                  "parallelIndex": 0,
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 4585,
+                  "duration": 7540,
                   "errors": [],
                   "stdout": [
                     {
@@ -134,7 +563,7 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-12-29T06:17:56.627Z",
+                  "startTime": "2025-12-29T06:57:30.767Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -152,9 +581,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-12-29T06:17:52.411Z",
-    "duration": 9005.767999999225,
-    "expected": 1,
+    "startTime": "2025-12-29T06:57:14.577Z",
+    "duration": 57586.089,
+    "expected": 12,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
