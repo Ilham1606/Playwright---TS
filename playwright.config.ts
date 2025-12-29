@@ -9,7 +9,6 @@ const isCI = !!process.env.CI;
 export default defineConfig({
   testDir: "./src/tests",
   timeout: 60 * 1000, // Increased timeout for external URLs (60s)
-  navigationTimeout: 60 * 1000, // Increased navigation timeout
   retries: isCI ? 3 : 1, // More retries in CI (increased from 2 to 3)
   fullyParallel: false, // Run tests sequentially in CI
   workers: isCI ? 1 : 4, // Single worker in CI to avoid resource constraints
