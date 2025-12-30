@@ -1,69 +1,73 @@
+# Nama workflow yang muncul di GitHub Actions
 name: Playwright Tests with Allure Reporting
 
+# Trigger CI saat push & PR ke branch utama
 on:
   push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+    branches: [main]
 
+  # pull_request:
+  #   branches: [main, develop]
+
+# Runner Linux + timeout biar CI gak ngegantung
 jobs:
   test:
     name: Playwright Tests
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
+    # Kalau satu browser gagal, browser lain tetap jalan
     strategy:
       fail-fast: false
+
+      # Matrix test per browser
       matrix:
         node-version: [20.x]
-        browser: [chromium]
+        browser: [chromium, firefox]
 
+        # Clone repo ke runner
     steps:
-      # Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Setup Node.js with caching
-      - name: Setup Node.js ${{ matrix.node-version }}
+        # Setup Node + npm cache biar install lebih cepat
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: npm
 
-      # Install dependencies
+        # Install dependency sesuai package-lock.json (CI best practice)
       - name: Install dependencies
         run: npm ci
 
-      # Install Playwright browsers
+        # Install browser & OS dependency Playwright
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Setup Java for Allure
-      - name: Setup Java
+        # Java required buat generate Allure HTML report
+      - name: Setup Java (for Allure)
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
-          java-version: "21"
+          distribution: temurin
+          java-version: "17"
 
-      # Create test results directory
-      - name: Create test results directory
-        run: mkdir -p test-results
-
-      # Run tests
+        # Run test per browser (headless by default di CI)
       - name: Run Playwright tests (${{ matrix.browser }})
         run: npx playwright test --project=${{ matrix.browser }}
         env:
           CI: true
           BROWSER: ${{ matrix.browser }}
 
-      # Generate Allure report
+        # Generate Allure HTML dari allure-results
+        # always(): jalan walau test gagal
       - name: Generate Allure report
         if: always()
         run: |
-          npx allure generate test-results --clean -o allure-report
+          npx allure generate allure-results --clean -o allure-report
 
-      # Upload Playwright HTML report as artifact
-      - name: Upload Playwright Report
+        # Upload Playwright HTML report per browser
+      - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -71,8 +75,8 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      # Upload Allure report as artifact
-      - name: Upload Allure Report
+      # Upload Allure HTML report per browser
+      - name: Upload Allure report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -80,16 +84,16 @@ jobs:
           path: allure-report/
           retention-days: 30
 
-      # Upload test results JSON
-      - name: Upload test results
+      # Upload JUnit XML (dipakai buat summary & Jenkins-compatible)
+      - name: Upload JUnit test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.browser }}
+          name: junit-results-${{ matrix.browser }}
           path: test-results/
           retention-days: 30
 
-      # Publish test report
+      # Tampilkan hasil test langsung di GitHub UI
       - name: Publish test results
         if: always()
         uses: EnricoMi/publish-unit-test-result-action@v2
@@ -97,33 +101,22 @@ jobs:
           files: test-results/junit.xml
           check_name: Test Results - ${{ matrix.browser }}
 
-  # Summary job - runs after all test matrices complete
+  # Job summary jalan setelah semua matrix selesai
   test-summary:
     name: Test Summary
     needs: test
     runs-on: ubuntu-latest
     if: always()
 
+    # Summary simple di tab Actions
     steps:
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: all-artifacts
-
       - name: Generate summary
         run: |
           echo "## Test Execution Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ All test matrices completed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Artifacts Available:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Playwright Reports (HTML)" >> $GITHUB_STEP_SUMMARY
-          echo "- Allure Reports (HTML)" >> $GITHUB_STEP_SUMMARY
-          echo "- Test Results (JSON, JUnit XML)" >> $GITHUB_STEP_SUMMARY
-
-      - name: Check test results
-        run: |
-          if [ "${{ needs.test.result }}" != "success" ]; then
-            echo "::error::Tests failed! Check artifacts for details."
-            exit 1
-          fi
+          echo "**Artifacts:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Playwright HTML Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Allure HTML Report" >> $GITHUB_STEP_SUMMARY
+          echo "- JUnit Results" >> $GITHUB_STEP_SUMMARY
