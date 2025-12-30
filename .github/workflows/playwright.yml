@@ -5,8 +5,9 @@ name: Playwright Tests with Allure Reporting
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main, develop]
+
+  # pull_request:
+  #   branches: [main, develop]
 
 # Runner Linux + timeout biar CI gak ngegantung
 jobs:
