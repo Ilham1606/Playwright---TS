@@ -1,6 +1,10 @@
 # Nama workflow yang muncul di GitHub Actions
 name: Playwright Tests with Allure Reporting
 
+permissions:
+  contents: read
+  checks: write
+
 # Trigger CI saat push & PR ke branch utama
 on:
   push:
