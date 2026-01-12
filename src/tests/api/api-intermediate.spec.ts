@@ -2,7 +2,9 @@ import { test, expect } from "@playwright/test";
 
 const baseURL = "https://dummyjson.com";
 
-test.describe("API Login Tests", () => {
+const id = 66; // existing user id
+
+test.describe("API Login Tests", async () => {
   test("POST User Login - Successful", async ({ request }) => {
     const loginPayload = {
       username: "emilys",
@@ -39,5 +41,35 @@ test.describe("API Login Tests", () => {
     const responseBody = await response.json();
     console.log(responseBody);
     expect(responseBody).toHaveProperty("message", "Invalid credentials");
+  });
+
+  test("POST add User - Successful", async ({ request }) => {
+    const response = await request.post(`${baseURL}/users/add`);
+    expect(response.status()).toBe(201);
+
+    const responseBody = await response.json();
+    console.log(responseBody);
+  });
+
+  test("PUT update User - Successful", async ({ request }) => {
+    const response = await request.put(`${baseURL}/users/${id}`, {
+      data: {
+        firstName: "JokoUI",
+      },
+    });
+    expect(response.status()).toBe(200);
+    const responseBody = await response.json();
+    expect(responseBody.firstName).toBe("JokoUI");
+    console.log(responseBody);
+  });
+
+  test("DELETE User - Successful", async ({ request }) => {
+    const response = await request.delete(`${baseURL}/users/${id}`);
+    expect(response.status()).toBe(200);
+
+    const responseBody = await response.json();
+    console.log(responseBody);
+    expect(responseBody).toHaveProperty("isDeleted", true);
+    console.log("User deleted on: " + responseBody.deletedOn);
   });
 });
