@@ -6,32 +6,34 @@ test.describe("API Basic Tests", () => {
   test("GET list users", async ({ request }) => {
     // send GET request to /users endpoint and store the response
     const response = await request.get(`${baseURL}/users`);
-    if (response.status() === 200) {
-      expect(response.status()).toBe(200);
-      console.log("Status code is 200 as expected.");
-    } else {
-      console.log("Unexpected status code: " + response.status());
-    }
+    expect(response.status()).toBe(200);
 
     // parse the response body as JSON
     const responseBody = await response.json();
     expect(responseBody).toHaveProperty("users");
     expect(responseBody.total).toBeGreaterThanOrEqual(208);
-    expect(responseBody.skip).toBeGreaterThan(0);
+    expect(responseBody.skip).toBe(0);
     expect(responseBody.limit).toBeGreaterThanOrEqual(30);
+    console.log(responseBody);
   });
 
   test("GET Single user", async ({ request }) => {
     // send GET request to /users/1 endpoint and store the response
-    const response = await request.get(`${baseURL}/users/1`);
+    const response = await request.get(`${baseURL}/users/66`);
     expect(response.status()).toBe(200);
 
     // parse the response body as JSON
     const responseBody = await response.json();
-    expect(responseBody).toHaveProperty("id", 1);
-    expect(responseBody).toHaveProperty("firstName", "Emily");
-    expect(responseBody).toHaveProperty("lastName", "Johnson");
-    expect(responseBody).toHaveProperty("age", 29);
+    expect(responseBody).toHaveProperty("id", 66);
+    expect(responseBody).toHaveProperty("firstName", "Aria");
+    expect(responseBody).toHaveProperty("lastName", "Ferguson");
+    expect(responseBody).toHaveProperty("age", 28);
+    // console.log(
+    //   "User ID: " + responseBody.id + ",",
+    //   "First Name: " + responseBody.firstName + ",",
+    //   "Last Name: " + responseBody.lastName + ",",
+    //   "Age: " + responseBody.age
+    // );
   });
 
   test("GET Single user - Not Found", async ({ request }) => {
