@@ -39,7 +39,7 @@ test.describe("API Login Tests", async () => {
     expect(response.status()).toBe(400);
 
     const responseBody = await response.json();
-    console.log(responseBody);
+    // console.log(responseBody);
     expect(responseBody).toHaveProperty("message", "Invalid credentials");
   });
 
@@ -48,7 +48,7 @@ test.describe("API Login Tests", async () => {
     expect(response.status()).toBe(201);
 
     const responseBody = await response.json();
-    console.log(responseBody);
+    // console.log(responseBody);
   });
 
   test("PUT update User - Successful", async ({ request }) => {
@@ -60,7 +60,7 @@ test.describe("API Login Tests", async () => {
     expect(response.status()).toBe(200);
     const responseBody = await response.json();
     expect(responseBody.firstName).toBe("JokoUI");
-    console.log(responseBody);
+    // console.log(responseBody);
   });
 
   test("DELETE User - Successful", async ({ request }) => {
@@ -68,7 +68,7 @@ test.describe("API Login Tests", async () => {
     expect(response.status()).toBe(200);
 
     const responseBody = await response.json();
-    console.log(responseBody);
+    // console.log(responseBody);
     expect(responseBody).toHaveProperty("isDeleted", true);
     console.log("User deleted on: " + responseBody.deletedOn);
   });

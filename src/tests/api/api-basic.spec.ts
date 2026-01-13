@@ -14,7 +14,7 @@ test.describe("API Basic Tests", () => {
     expect(responseBody.total).toBeGreaterThanOrEqual(208);
     expect(responseBody.skip).toBe(0);
     expect(responseBody.limit).toBeGreaterThanOrEqual(30);
-    console.log(responseBody);
+    // console.log(responseBody);
   });
 
   test("GET Single user", async ({ request }) => {
@@ -28,12 +28,7 @@ test.describe("API Basic Tests", () => {
     expect(responseBody).toHaveProperty("firstName", "Aria");
     expect(responseBody).toHaveProperty("lastName", "Ferguson");
     expect(responseBody).toHaveProperty("age", 28);
-    // console.log(
-    //   "User ID: " + responseBody.id + ",",
-    //   "First Name: " + responseBody.firstName + ",",
-    //   "Last Name: " + responseBody.lastName + ",",
-    //   "Age: " + responseBody.age
-    // );
+    console.log(responseBody);
   });
 
   test("GET Single user - Not Found", async ({ request }) => {
@@ -43,7 +38,7 @@ test.describe("API Basic Tests", () => {
 
     // parse the response body as JSON
     const responseBody = await response.json();
-    console.log(responseBody);
+    // console.log(responseBody);
     expect(responseBody).toHaveProperty(
       "message",
       "User with id '1616' not found"
