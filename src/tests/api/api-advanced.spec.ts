@@ -31,13 +31,13 @@ test.describe("API test Full CRUD Operations", async () => {
     expect(responseBodyUpdateUser.firstName).toBe("Joksan");
     expect(responseBodyUpdateUser.lastName).toBe("Jamalud");
     expect(responseBodyUpdateUser.role).toBe("Mandiri");
-    console.log(responseBodyUpdateUser);
+    // console.log(responseBodyUpdateUser);
 
     const responseDeleteUser = await request.delete(`${baseURL}/users/${ids}`);
     expect(responseDeleteUser.status()).toBe(200);
 
     const responseBody = await responseDeleteUser.json();
-    console.log(responseBody);
+    // console.log(responseBody);
     expect(responseBody).toHaveProperty("isDeleted", true);
     console.log("User deleted on: " + responseBody.deletedOn);
   });
