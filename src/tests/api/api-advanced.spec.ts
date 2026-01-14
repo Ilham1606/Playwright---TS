@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 const baseURL = "https://dummyjson.com";
 
 test.describe("API test Full CRUD Operations", async () => {
+  test.skip(!!process.env.CI, "Skip test on CI environment");
   let ids: number;
   // to store the created user id
   test("POST add User - Joks Malud", async ({ request }) => {
