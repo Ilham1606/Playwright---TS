@@ -1,6 +1,6 @@
-import { test as base } from "@playwright/test";
+import { test as base, expect } from "@playwright/test";
 import { FormLayoutPage } from "../pages/form-layout.page";
-import { Dashboard } from "../pages/dasboard.page.";
+import { Dashboard } from "../pages/dashboard.page";
 import { DatePicker } from "../pages/date-picker.page";
 import { TreeGridPage } from "../pages/tree-grid.page";
 
@@ -13,17 +13,24 @@ type Fixtures = {
 
 export const test = base.extend<Fixtures>({
   formLayoutPage: async ({ page }, use) => {
-    await use(new FormLayoutPage(page));
+    const formLayoutPage = new FormLayoutPage(page);
+    await use(formLayoutPage);
   },
+
   dashboard: async ({ page }, use) => {
-    await use(new Dashboard(page));
+    const dashboard = new Dashboard(page);
+    await use(dashboard);
   },
+
   datePickerPage: async ({ page }, use) => {
-    await use(new DatePicker(page));
+    const datePickerPage = new DatePicker(page);
+    await use(datePickerPage);
   },
+
   treeGridPage: async ({ page }, use) => {
-    await use(new TreeGridPage(page));
+    const treeGridPage = new TreeGridPage(page);
+    await use(treeGridPage);
   },
 });
 
-export { expect } from "@playwright/test";
+export { expect };

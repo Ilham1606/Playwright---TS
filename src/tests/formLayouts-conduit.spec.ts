@@ -2,7 +2,7 @@ import { test } from "../tests/test-fixtures";
 import { testData } from "../data/testData";
 
 const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
-const skipInCI = !!process.env.CI;
+// const skipInCI = !!process.env.CI;
 
 const {
   uname,
@@ -21,70 +21,51 @@ const {
 } = testData();
 
 // POM STYLE //
-test.beforeEach(async ({ page, dashboard, formLayoutPage }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  await page.goto(URL);
-  await dashboard.selectDarkTheme();
-  await formLayoutPage.navigateToFormsMenu();
-  await formLayoutPage.navigateToFormLayouts();
-});
+test.describe("Test Forms Menu", () => {
+  test.beforeEach(async ({ page, dashboard, formLayoutPage }) => {
+    await page.goto(URL);
+    await dashboard.selectDarkTheme();
+    await formLayoutPage.navigateToFormsMenu();
+    await formLayoutPage.navigateToFormLayouts();
+  });
 
-test("Fill in Inline Form", async ({ formLayoutPage }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  await formLayoutPage.fillInlineForm(uname, email);
-});
+  test("Fill in Inline Form", async ({ formLayoutPage }) => {
+    await formLayoutPage.fillInlineForm(uname, email);
+  });
 
-test("Fill in Using Grid Form", async ({ formLayoutPage }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  await formLayoutPage.fillGridForm(emailke2, password);
-});
+  test("Fill in Using Grid Form", async ({ formLayoutPage }) => {
+    await formLayoutPage.fillGridForm(emailke2, password);
+  });
 
-test("Fill in Basic Form", async ({ formLayoutPage }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  await formLayoutPage.fillEmailBasicForm(emailBasic, passBasic);
-});
+  test("Fill in Basic Form", async ({ formLayoutPage }) => {
+    await formLayoutPage.fillEmailBasicForm(emailBasic, passBasic);
+  });
 
-test("Fill in Without Label Form", async ({ formLayoutPage }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  await formLayoutPage.fillWithoutLabelForm(recipients, subject, message);
-});
+  test("Fill in Without Label Form", async ({ formLayoutPage }) => {
+    await formLayoutPage.fillWithoutLabelForm(recipients, subject, message);
+  });
 
-test("Fill in Block Form", async ({ formLayoutPage }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  await formLayoutPage.fillBlockForm(
-    firstName,
-    lastName,
-    emailBlockForm,
-    website
-  );
-});
+  test("Fill in Block Form", async ({ formLayoutPage }) => {
+    await formLayoutPage.fillBlockForm(
+      firstName,
+      lastName,
+      emailBlockForm,
+      website
+    );
+  });
 
-test("extract text", async ({ page }) => {
-  if (skipInCI) {
-    test.skip();
-  }
-  const datePickerMenu = page.getByRole("link", { name: "Datepicker" });
-  const datePicker = await datePickerMenu.click();
+  test("extract text", async ({ page }) => {
+    const datePickerMenu = page.getByRole("link", { name: "Datepicker" });
+    const datePicker = await datePickerMenu.click();
 
-  const locatorTitle = page.locator(
-    "//nb-card-header[text()='Common Datepicker']"
-  );
+    const locatorTitle = page.locator(
+      "//nb-card-header[text()='Common Datepicker']"
+    );
 
-  const titleText = await locatorTitle.textContent();
+    const titleText = await locatorTitle.textContent();
 
-  console.log(titleText);
+    console.log(titleText);
+  });
 });
 
 // test.beforeEach("Visit Conduit UI Playground", async ({ page }) => {
