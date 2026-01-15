@@ -32,10 +32,10 @@ type TestDataProps = {
 
 export const testData = (): TestDataProps => {
   return {
-    uname: "Jane Doe",
-    email: "jane.doe@email.com",
+    uname: "Si Doels",
+    email: "sidoels.doe@email.com",
     emailke2: "emailkeduaseedoel@gmail.com",
-    password: "Passwordnyanigh123",
+    password: "Passwordnya123",
 
     // basic form //
     emailBasic: "emailbasic@gmail.com",
@@ -56,10 +56,10 @@ export const testData = (): TestDataProps => {
     dateCommon: "Dec 31, 2025",
 
     // date picker with range //
-    dateRangeStart: "1",
-    dateRangeEnd: "16",
+    dateRangeStart: "2",
+    dateRangeEnd: "12",
 
     // date picker with disabled min max values //
-    dateMinMax: "14",
+    dateMinMax: "12",
   };
 };
