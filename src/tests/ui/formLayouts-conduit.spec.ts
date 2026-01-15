@@ -1,5 +1,5 @@
-import { test } from "../tests/test-fixtures";
-import { testData } from "../data/testData";
+import { test } from "../test-fixtures";
+import { testData } from "../../data/testData";
 
 const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
 // const skipInCI = !!process.env.CI;
