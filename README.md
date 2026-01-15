@@ -30,6 +30,12 @@ This is **not** a production-ready framework.
 - TypeScript
 - Node.js
 
+## CI & Reporting
+
+- Playwright + TypeScript
+- GitHub Actions (PR-based)
+- Allure Report (CI artifact)
+
 ## How to run
 
 ```bash
