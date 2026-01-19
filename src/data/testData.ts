@@ -32,7 +32,7 @@ type TestDataProps = {
 
 export const testData = (): TestDataProps => {
   return {
-    uname: "Si Doels12",
+    uname: "Si Doels",
     email: "sidoels.doe@email.com",
     emailke2: "emailkeduaseedoel@gmail.com",
     password: "Passwordnya123",
