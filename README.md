@@ -11,6 +11,7 @@ Nothing fancy here — just practice, experiments, and notes while trying to und
 - API testing experiments
 - Simple auth flows (token, headers, `/auth/me`, etc.)
 - Trial-and-error configs and helpers
+- Page Object Model
 
 Some code might look basic or repetitive — that’s intentional while learning.
 
