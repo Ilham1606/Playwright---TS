@@ -1,4 +1,4 @@
-import { ENV } from "./../../config/env.d";
+import { ENV } from "./../../config/env";
 import { test } from "../test-fixtures";
 import { testData } from "../../data/testData";
 
