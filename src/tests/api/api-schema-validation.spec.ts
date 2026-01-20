@@ -1,4 +1,4 @@
-import { ENV } from "../../config/env.d";
+import { ENV } from "../../config/env";
 import { test, expect } from "@playwright/test";
 import { quotesSchema, userSchema } from "../../data/testDataApiDum";
 
