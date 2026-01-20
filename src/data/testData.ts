@@ -60,6 +60,6 @@ export const testData = (): TestDataProps => {
     dateRangeEnd: "12",
 
     // date picker with disabled min max values //
-    dateMinMax: "12",
+    dateMinMax: "24",
   };
 };
