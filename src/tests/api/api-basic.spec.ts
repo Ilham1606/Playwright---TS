@@ -1,11 +1,12 @@
+import { ENV } from "../../config/env.d";
 import { test, expect } from "@playwright/test";
 
-const baseURL = "https://dummyjson.com";
+// const baseURL = "https://dummyjson.com";
 
 test.describe("API Basic Tests", () => {
   test("GET list users", async ({ request }) => {
     // send GET request to /users endpoint and store the response
-    const response = await request.get(`${baseURL}/users`);
+    const response = await request.get(`${ENV.BASE_URL_DUMMYJSON}/users`);
     expect(response.status()).toBe(200);
 
     // parse the response body as JSON
@@ -19,7 +20,7 @@ test.describe("API Basic Tests", () => {
 
   test("GET Single user", async ({ request }) => {
     // send GET request to /users/1 endpoint and store the response
-    const response = await request.get(`${baseURL}/users/66`);
+    const response = await request.get(`${ENV.BASE_URL_DUMMYJSON}/users/66`);
     expect(response.status()).toBe(200);
 
     // parse the response body as JSON
@@ -33,7 +34,7 @@ test.describe("API Basic Tests", () => {
 
   test("GET Single user - Not Found", async ({ request }) => {
     // send GET request to /users/9999 endpoint and store the response
-    const response = await request.get(`${baseURL}/users/1616`);
+    const response = await request.get(`${ENV.BASE_URL_DUMMYJSON}/users/1616`);
     expect(response.status()).toBe(404);
 
     // parse the response body as JSON
@@ -41,7 +42,7 @@ test.describe("API Basic Tests", () => {
     // console.log(responseBody);
     expect(responseBody).toHaveProperty(
       "message",
-      "User with id '1616' not found"
+      "User with id '1616' not found",
     );
   });
 });
