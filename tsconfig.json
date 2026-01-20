@@ -15,6 +15,7 @@
   },
   "include": [
     "src",
+    "env.d.ts",
     "playwright.config.ts",
     "tests/**/*.ts",
     "src/tests/test-fixtures.ts"

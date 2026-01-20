@@ -1,18 +1,19 @@
+import { ENV } from "./../../config/env.d";
 import { test } from "../test-fixtures";
 import { testData } from "../../data/testData";
 
-const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
+// const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
 
 const { dateCommon, dateRangeStart, dateRangeEnd, dateMinMax } = testData();
 
 test.describe("Test Date Picker Menu", () => {
   test.beforeEach(
     async ({ page, dashboard, formLayoutPage, datePickerPage }) => {
-      await page.goto(URL);
+      await page.goto(ENV.BASE_URL_CONDUIT);
       await dashboard.selectDarkTheme();
       await formLayoutPage.navigateToFormsMenu();
       await datePickerPage.gotoDatePickerMenu();
-    }
+    },
   );
 
   test("Assert all title text DatePickers", async ({ datePickerPage }) => {

@@ -1,12 +1,13 @@
+import { ENV } from "../../config/env.d";
 import { test } from "../test-fixtures";
 import { testData } from "../../data/testData";
 
-const URL = "https://playground.bondaracademy.com/pages/tables/tree-grid";
+// const URL = "https://playground.bondaracademy.com/pages/tables/tree-grid";
 // const skipInCI = !!process.env.CI;
 
 test.describe("Test Tree Grid Menu", () => {
   test.beforeEach(async ({ page, dashboard }) => {
-    await page.goto(URL);
+    await page.goto(ENV.BASE_URL_CONDUIT);
     await dashboard.selectDarkTheme();
   });
 

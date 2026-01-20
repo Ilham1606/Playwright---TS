@@ -1,6 +1,7 @@
+import { ENV } from "../../config/env.d";
 import { test, expect } from "@playwright/test";
 
-const baseURL = "https://dummyjson.com";
+// const baseURL = "https://dummyjson.com";
 
 const id = 66; // existing user id
 
@@ -12,9 +13,12 @@ test.describe("API Login Tests", async () => {
       expiresInMins: 30,
     };
 
-    const response = await request.post(`${baseURL}/user/login`, {
-      data: loginPayload,
-    });
+    const response = await request.post(
+      `${ENV.BASE_URL_DUMMYJSON}/user/login`,
+      {
+        data: loginPayload,
+      },
+    );
 
     expect(response.status()).toBe(200);
     const responseBody = await response.json();
@@ -33,9 +37,12 @@ test.describe("API Login Tests", async () => {
       password: "emilyapass",
       expiresInMins: 30,
     };
-    const response = await request.post(`${baseURL}/user/login`, {
-      data: loginPayloadFailed,
-    });
+    const response = await request.post(
+      `${ENV.BASE_URL_DUMMYJSON}/user/login`,
+      {
+        data: loginPayloadFailed,
+      },
+    );
     expect(response.status()).toBe(400);
 
     const responseBody = await response.json();
@@ -44,7 +51,7 @@ test.describe("API Login Tests", async () => {
   });
 
   test("POST add User - Successful", async ({ request }) => {
-    const response = await request.post(`${baseURL}/users/add`);
+    const response = await request.post(`${ENV.BASE_URL_DUMMYJSON}/users/add`);
     expect(response.status()).toBe(201);
 
     const responseBody = await response.json();
@@ -52,11 +59,14 @@ test.describe("API Login Tests", async () => {
   });
 
   test("PUT update User - Successful", async ({ request }) => {
-    const response = await request.put(`${baseURL}/users/${id}`, {
-      data: {
-        firstName: "JokoUI",
+    const response = await request.put(
+      `${ENV.BASE_URL_DUMMYJSON}/users/${id}`,
+      {
+        data: {
+          firstName: "JokoUI",
+        },
       },
-    });
+    );
     expect(response.status()).toBe(200);
     const responseBody = await response.json();
     expect(responseBody.firstName).toBe("JokoUI");
@@ -64,7 +74,9 @@ test.describe("API Login Tests", async () => {
   });
 
   test("DELETE User - Successful", async ({ request }) => {
-    const response = await request.delete(`${baseURL}/users/${id}`);
+    const response = await request.delete(
+      `${ENV.BASE_URL_DUMMYJSON}/users/${id}`,
+    );
     expect(response.status()).toBe(200);
 
     const responseBody = await response.json();

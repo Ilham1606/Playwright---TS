@@ -1,7 +1,8 @@
+import { ENV } from "../../config/env.d";
 import { test } from "../test-fixtures";
 import { testData } from "../../data/testData";
 
-const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
+// const URL = "https://playground.bondaracademy.com/pages/iot-dashboard";
 // const skipInCI = !!process.env.CI;
 
 const {
@@ -23,7 +24,7 @@ const {
 // POM STYLE //
 test.describe("Test Forms Menu", () => {
   test.beforeEach(async ({ page, dashboard, formLayoutPage }) => {
-    await page.goto(URL);
+    await page.goto(ENV.BASE_URL_CONDUIT);
     await dashboard.selectDarkTheme();
     await formLayoutPage.navigateToFormsMenu();
     await formLayoutPage.navigateToFormLayouts();
@@ -50,7 +51,7 @@ test.describe("Test Forms Menu", () => {
       firstName,
       lastName,
       emailBlockForm,
-      website
+      website,
     );
   });
 
@@ -59,7 +60,7 @@ test.describe("Test Forms Menu", () => {
     const datePicker = await datePickerMenu.click();
 
     const locatorTitle = page.locator(
-      "//nb-card-header[text()='Common Datepicker']"
+      "//nb-card-header[text()='Common Datepicker']",
     );
 
     const titleText = await locatorTitle.textContent();

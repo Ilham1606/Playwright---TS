@@ -1,11 +1,12 @@
+import { ENV } from "../../config/env.d";
 import { test, expect } from "@playwright/test";
 import { quotesSchema, userSchema } from "../../data/testDataApiDum";
 
-const baseURL = "https://dummyjson.com";
+// const baseURL = "https://dummyjson.com";
 
 test.describe("API Schema Validation Tests", () => {
   test("GET Single user - Schema Validation", async ({ request }) => {
-    const response = await request.get(`${baseURL}/users/66`);
+    const response = await request.get(`${ENV.BASE_URL_DUMMYJSON}/users/66`);
     expect(response.status()).toBe(200);
 
     const responseBody = await response.json();
@@ -21,7 +22,7 @@ test.describe("API Schema Validation Tests", () => {
   });
 
   test("GET single Quote - Schema Validation", async ({ request }) => {
-    const resp = await request.get(`${baseURL}/quotes`);
+    const resp = await request.get(`${ENV.BASE_URL_DUMMYJSON}/quotes`);
     expect(resp.status()).toBe(200);
 
     const respBody = await resp.json();
