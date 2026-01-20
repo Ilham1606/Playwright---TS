@@ -6,12 +6,12 @@ permissions:
   pull-requests: write
 
 on:
-  pull_request:
-    branches: [main]
+  # pull_request:
+  #   branches: [main]
 
   # optional: kalau masih mau jalan di push ke main
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   test:
