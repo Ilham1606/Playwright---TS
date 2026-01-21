@@ -7,6 +7,9 @@ export class TreeGridPage {
   readonly searchField: Locator;
 
   // Row Projects //
+  readonly menuTablesAndData: Locator;
+  readonly subMenuTreeGrid: Locator;
+
   readonly projectsExpandIcon: Locator;
   readonly projectsNameCell: Locator;
   readonly projectsSizeCell: Locator;
@@ -27,18 +30,21 @@ export class TreeGridPage {
     this.searchField = page.getByRole("textbox", { name: "Search" });
 
     // Row Projects //
+    this.menuTablesAndData = page.getByRole("link", { name: "Tables & Data" });
+    this.subMenuTreeGrid = page.getByRole("link", { name: "Tree Grid" });
+
     this.projectsExpandIcon = page.locator(
-      "(//button[@aria-label='expand'])[1]"
+      "(//nb-tree-grid-row-toggle[@class='ng-star-inserted'])[1]",
     );
     this.projectsNameCell = page.locator(
-      "//td[@role='gridcell' and contains(text(),'project-1.doc')]"
+      "//td[@role='gridcell' and contains(text(),'project-1.doc')]",
     );
     this.projectsSizeCell = page.locator("(//td[@role='gridcell'])[6]");
     this.projectsKindCell = page.locator("(//td[@role='gridcell'])[7]");
 
     // Row Reports //
     this.reportsExpandIcon = page.locator(
-      "(//button[@aria-label='expand'])[2]"
+      "(//button[@aria-label='expand'])[2]",
     );
     this.reportsNameCell = page.locator("//tbody//tr[3]//td[1]");
     this.reportsSizeCell = page.locator("//tbody//tr[3]//td[2]");
@@ -48,8 +54,16 @@ export class TreeGridPage {
     this.otherExpandIcon = page.locator("(//button[@aria-label='expand'])[3]");
   }
 
-  async getProjectName() {
+  async goToTreeGrid() {
+    await this.menuTablesAndData.click();
+    await this.subMenuTreeGrid.click();
+  }
+
+  async clickChevronProjects() {
     await this.projectsExpandIcon.click();
+  }
+
+  async getProjectName() {
     const getProjectsName = (await this.projectsNameCell.textContent())?.trim();
     console.log("Projects Name: " + getProjectsName);
   }
