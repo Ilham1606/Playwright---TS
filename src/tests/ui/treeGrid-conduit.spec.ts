@@ -6,14 +6,16 @@ import { testData } from "../../data/testData";
 // const skipInCI = !!process.env.CI;
 
 test.describe("Test Tree Grid Menu", () => {
-  test.beforeEach(async ({ page, dashboard }) => {
+  test.beforeEach(async ({ page, dashboard, treeGridPage }) => {
     await page.goto(ENV.BASE_URL_CONDUIT);
     await dashboard.selectDarkTheme();
+    await treeGridPage.goToTreeGrid();
   });
 
   test("Expand Projects row and get project name, size & kind", async ({
     treeGridPage,
   }) => {
+    await treeGridPage.clickChevronProjects();
     await treeGridPage.getProjectName();
     await treeGridPage.getSizeProjects();
     await treeGridPage.getKindProjects();
