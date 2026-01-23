@@ -9,10 +9,6 @@ on:
   pull_request:
     branches: [main]
 
-  # optional: kalau masih mau jalan di push ke main
-  # push:
-  #   branches: [main]
-
 jobs:
   test:
     name: Playwright Tests
@@ -23,7 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [20.x]
-        browser: [chromium, firefox]
+        project:
+          - ui:user:chromium
+          - ui:user:firefox
+          - api
 
     steps:
       - name: Checkout code
@@ -47,13 +46,21 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Run Playwright tests (${{ matrix.browser }})
-        run: npx playwright test --project=${{ matrix.browser }}
+      - name: Run Playwright tests (${{ matrix.project }})
+        run: npx playwright test --project="${{ matrix.project }}"
         env:
           CI: true
           ALLURE_RESULTS_DIR: allure-results
 
-      # Generate Allure HTML (safe even if tests fail)
+          # ===== BASE URL =====
+          BASE_URL_CONDUIT: ${{ secrets.BASE_URL_CONDUIT }}
+          BASE_URL_DUMMYJSON: ${{ secrets.BASE_URL_DUMMYJSON }}
+          BASE_URL_BONDARCONDUIT: ${{ secrets.BASE_URL_BONDARCONDUIT }}
+
+          # ===== CREDENTIALS (.env) =====
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+
       - name: Generate Allure report
         if: always()
         run: |
@@ -64,7 +71,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ matrix.browser }}
+          name: playwright-report-${{ matrix.project }}
           path: playwright-report/
           retention-days: 30
 
@@ -72,7 +79,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report-${{ matrix.browser }}
+          name: allure-report-${{ matrix.project }}
           path: allure-report
           retention-days: 30
 
@@ -81,4 +88,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: test-results/**/*.xml
-          check_name: Test Results - ${{ matrix.browser }}
+          check_name: Test Results - ${{ matrix.project }}
