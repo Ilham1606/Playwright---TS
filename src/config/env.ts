@@ -15,5 +15,12 @@ export const ENV = {
     ? "https://dummyjson.com"
     : requireEnv("BASE_URL_DUMMYJSON"),
 
+  BASE_URL_BONDARCONDUIT: process.env.CI
+    ? "https://conduit.bondaracademy.com"
+    : requireEnv("BASE_URL_BONDARCONDUIT"),
+
+  TEST_EMAIL_CONDUIT: requireEnv("TEST_EMAIL_CONDUIT"),
+  TEST_PASSWORD_CONDUIT: requireEnv("TEST_PASSWORD_CONDUIT"),
+
   IS_CI: !!process.env.CI,
 };

@@ -27,7 +27,7 @@ export default defineConfig({
   ],
 
   use: {
-    headless: true,
+    headless: false,
     ignoreHTTPSErrors: true,
     screenshot: "only-on-failure",
     trace: "on-first-retry",
@@ -35,13 +35,40 @@ export default defineConfig({
   },
 
   projects: [
+    // ===== SETUP AUTH =====
     {
-      name: "chromium",
+      name: "setup:user",
+      testMatch: /.*\.setup\.ts/,
+    },
+
+    // ===== UI USER =====
+    {
+      name: "ui:user:chromium",
+      dependencies: ["setup:user"],
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: "storage/auth.json",
+      },
+    },
+
+    {
+      name: "ui:user:firefox",
+      dependencies: ["setup:user"],
+      use: {
+        ...devices["Desktop Firefox"],
+        storageState: "storage/auth.json",
+      },
+    },
+
+    // ===== UI PUBLIC (NO AUTH) =====
+    {
+      name: "ui:public:chromium",
       use: { ...devices["Desktop Chrome"] },
     },
+
+    // ===== API =====
     {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      name: "api",
     },
   ],
 });
