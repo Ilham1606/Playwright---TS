@@ -6,7 +6,6 @@ test.beforeEach("Login Conduit", async ({ page }) => {
 });
 
 test("Click Tags: Playwright", async ({ page }) => {
-  //   await page.getByRole("link", { name: " playwright " }).click();
   await page.locator("//a[contains(text(),'playwright')]").click();
 
   const articleTitle = page.locator("h1").first();

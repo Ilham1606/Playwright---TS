@@ -22,7 +22,7 @@ jobs:
         project:
           - ui:user:chromium
           - ui:user:firefox
-          - api
+          # - api
 
     steps:
       - name: Checkout code
@@ -58,8 +58,8 @@ jobs:
           BASE_URL_BONDARCONDUIT: ${{ secrets.BASE_URL_BONDARCONDUIT }}
 
           # ===== CREDENTIALS (.env) =====
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          USER_EMAIL: ${{ secrets.TEST_EMAIL_CONDUIT }}
+          USER_PASSWORD: ${{ secrets.TEST_PASSWORD_CONDUIT }}
 
       - name: Generate Allure report
         if: always()

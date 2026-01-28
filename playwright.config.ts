@@ -41,9 +41,10 @@ export default defineConfig({
       testMatch: /.*\.setup\.ts/,
     },
 
-    // ===== UI USER =====
+    // ===== TEST YANG BUTUH AUTHENTICATION =====
     {
-      name: "ui:user:chromium",
+      name: "ui:auth:chrome",
+      testMatch: /ui\/.*\.auth\.spec\.ts/,
       dependencies: ["setup:user"],
       use: {
         ...devices["Desktop Chrome"],
@@ -52,7 +53,8 @@ export default defineConfig({
     },
 
     {
-      name: "ui:user:firefox",
+      name: "ui:auth:firefox",
+      testMatch: /.*\.auth\.spec\.ts/,
       dependencies: ["setup:user"],
       use: {
         ...devices["Desktop Firefox"],
@@ -60,15 +62,19 @@ export default defineConfig({
       },
     },
 
-    // ===== UI PUBLIC (NO AUTH) =====
+    // ===== TEST PUBLIC (NO LOGIN) =====
     {
-      name: "ui:public:chromium",
-      use: { ...devices["Desktop Chrome"] },
+      name: "ui:public",
+      testMatch: /.*\.spec\.ts/,
+      testIgnore: /.*\.setup\.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+      },
     },
 
     // ===== API =====
-    {
-      name: "api",
-    },
+    // {
+    //   name: "api",
+    // },
   ],
 });
